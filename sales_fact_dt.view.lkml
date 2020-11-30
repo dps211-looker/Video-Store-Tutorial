@@ -1,85 +1,4 @@
-view: calendar_date {
-  sql_table_name: VIDEO5.TIMES ;;
-  dimension_group: Calendar_Year {
-    type: time
-    timeframes: [
-      #raw,
-      #date,
-      #week,
-      #month,
-      #quarter,
-      year
-    ]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}.TRANSACTION_DATE ;;
-  }
-  dimension_group: Calendar_Quarter {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}.TRANSACTION_DATE ;;
-  }
-  dimension_group: Calendar_Month {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}.TRANSACTION_DATE ;;
-  }
-  dimension_group: Day_Of_Week {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}.TRANSACTION_DATE ;;
-  }
-  dimension_group: Calendar_Day {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}.TRANSACTION_DATE ;;
-  }
-  dimension: Holiday_Flag {
-    type: string
-    sql: ${TABLE}.HOLIDAY_FLAG ;;
-  }
-  dimension: Time_Key {
-    type: string
-    sql: ${TABLE}.TIME_KEY ;;
-  }
-}
-##view: calendar_date {
+view: sales_fact_dt {
   # # You can specify the table name if it's different from the view name:
   # sql_table_name: my_schema_name.tester ;;
   #
@@ -108,9 +27,9 @@ view: calendar_date {
   #   type: sum
   #   sql: ${lifetime_orders} ;;
   # }
-##}
+}
 
-# view: calendar_date {
+# view: sales_fact_dt {
 #   # Or, you could make this view a derived table, like this:
 #   derived_table: {
 #     sql: SELECT

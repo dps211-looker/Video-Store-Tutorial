@@ -1,6 +1,8 @@
 include: "*.view.lkml"
+#include: "product.view.lkml"
 
 view: monthly_sales_analysis {
+  sql_table_name: VIDEO5.SALES_FACT ;;
 
   dimension_group: Transaction_Date_Month {
     type: time
@@ -15,6 +17,7 @@ view: monthly_sales_analysis {
     convert_tz: no
     datatype: date
     #sql: ${Transaction_Date_Month_date} ;;
+
 
 
   }
@@ -46,29 +49,29 @@ view: monthly_sales_analysis {
     datatype: date
     sql: ${Transaction_Date_Month_year} ;;
   }
-  #!##dimension: city {
-  #!##  type: string
-  #!##  sql: ${city}   ;;
-  #!##}
-  #!##dimension: region {
-  #!##  type: string
-  #!##  sql: ${region}   ;;
-  #!##}
 
-  #!##dimension: department {
-  #!##  type: string
- #!##  # sql: ${department}   ;;
-  #!##  sql: ${product.department} ;;
-  #!##}
- #!## dimension: store_name {
-  #!##  type: string
-  #!##  sql: ${store_name}   ;;
-  #!##}
-  measure: Monthly_Sales_per_Store {
+  dimension: city {
+    type: string
+    sql: ${store.city}  ;;
+  }
+  dimension: region {
+    type: string
+    sql: ${store.region}   ;;
+  }
+
+  dimension: department {
+    type: string
+    sql: ${product.department} ;;
+  }
+ dimension: store_name {
+   type: string
+   sql: ${store.store_name}   ;;
+ }
+  measure: sales {
     type: sum
     sql: ${sales_fact.sales} ;;
   }
-  measure: Average_Monthly_Sales_per_Store {
+  measure: Average_Monthly_Sales_Per_Store {
     type: average
     sql: ${sales_fact.sales} ;;
   }

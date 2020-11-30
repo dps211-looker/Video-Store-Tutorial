@@ -17,6 +17,31 @@ explore: target_sales {}
 explore: calendar_date {}
 explore: video_analysis_information{}
 explore: stores_and_sales_details{}
+explore:  monthly_sales_tables_dt{}
+explore: monthly_sales_info {
+  view_name: monthly_sales_info
+   #extends: [times, product, store, sales_fact]
+  join: times {
+    from: times
+    sql_on: ${times.time_key} = ${monthly_sales_info.Transaction_month} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: product {
+    from: product
+    sql_on: ${product.product_key} = ${monthly_sales_info.product_key} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+  join: store {
+    from: store
+    sql_on: ${store.store_key} = ${monthly_sales_info.store_key} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+
+}
+explore: times {}
 explore : monthly_sales_analysis{
   join: times {
     sql_on: ${times.time_key} = ${sales_fact.time_key} ;;
