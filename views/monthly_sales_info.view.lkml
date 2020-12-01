@@ -16,6 +16,7 @@ view: monthly_sales_info {
       }
 
     }
+
   }
   dimension: product_key {
     type: number
@@ -39,6 +40,8 @@ view: monthly_sales_info {
     drill_fields: [Transaction_month, Transaction_quarter, Transaction_year]
 
   }
+
+
 
   #dimension: sales {
    # type: number

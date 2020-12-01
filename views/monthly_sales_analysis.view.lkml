@@ -1,5 +1,6 @@
 include: "*.view.lkml"
 #include: "product.view.lkml"
+#test push1
 
 view: monthly_sales_analysis {
   sql_table_name: VIDEO5.SALES_FACT ;;
@@ -50,63 +51,50 @@ view: monthly_sales_analysis {
     sql: ${Transaction_Date_Month_year} ;;
   }
 
-  dimension: city {
+  dimension: store_key_foreign {
     type: string
-    sql: ${store.city}  ;;
+    sql: ${store.store_key}  ;;
   }
-  dimension: region {
+  dimension: time_key_foreign {
     type: string
-    sql: ${store.region}   ;;
+    sql: ${times.time_key}  ;;
   }
-
-  dimension: department {
+  dimension: product_key_foreign {
     type: string
-    sql: ${product.department} ;;
-  }
- dimension: store_name {
-   type: string
-   sql: ${store.store_name}   ;;
- }
-  measure: sales {
-    type: sum
-    sql: ${sales_fact.sales} ;;
-  }
-  measure: Average_Monthly_Sales_Per_Store {
-    type: average
-    sql: ${sales_fact.sales} ;;
+    sql: ${product.product_key}  ;;
   }
 }
 
 
 ##view: monthly_sales_analysis {
-  # # You can specify the table name if it's different from the view name:
-  # sql_table_name: my_schema_name.tester ;;
-  #
-  # # Define your dimensions and measures here, like this:
-  # dimension: user_id {
-  #   description: "Unique ID for each user that has ordered"
-  #   type: number
-  #   sql: ${TABLE}.user_id ;;
-  # }
-  #
-  # dimension: lifetime_orders {
-  #   description: "The total number of orders for each user"
-  #   type: number
-  #   sql: ${TABLE}.lifetime_orders ;;
-  # }
-  #
-  # dimension_group: most_recent_purchase {
-  #   description: "The date when each user last ordered"
-  #   type: time
-  #   timeframes: [date, week, month, year]
-  #   sql: ${TABLE}.most_recent_purchase_at ;;
-  # }
-  #
-  # measure: total_lifetime_orders {
-  #   description: "Use this for counting lifetime orders across many users"
-  #   type: sum
-  #   sql: ${lifetime_orders} ;;
-  # }
+# # You can specify the table name if it's different from the view name:
+# sql_table_name: my_schema_name.tester ;;
+#
+# # Define your dimensions and measures here, like this:
+# dimension: user_id {
+#   description: "Unique ID for each user that has ordered"
+#   type: number
+#   sql: ${TABLE}.user_id ;;
+# }
+#
+# dimension: lifetime_orders {
+#   description: "The total number of orders for each user"
+#   type: number
+#   sql: ${TABLE}.lifetime_orders ;;
+# }
+#
+# dimension_group: most_recent_purchase {
+#   description: "The date when each user last ordered"
+#   type: time
+#   timeframes: [date, week, month, year]
+#   sql: ${TABLE}.most_recent_purchase_at ;;
+# }
+#
+# measure: total_lifetime_orders {
+#   description: "Use this for counting lifetime orders across many users"
+#   type: sum
+#   sql: ${lifetime_orders} ;;
+# }
 ##}
 
 # view: monthly_sales_analysis {
