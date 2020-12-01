@@ -50,30 +50,17 @@ view: monthly_sales_analysis {
     sql: ${Transaction_Date_Month_year} ;;
   }
 
-  dimension: city {
+  dimension: store_key_foreign {
     type: string
-    sql: ${store.city}  ;;
+    sql: ${store.store_key}  ;;
   }
-  dimension: region {
+  dimension: time_key_foreign {
     type: string
-    sql: ${store.region}   ;;
+    sql: ${times.time_key}  ;;
   }
-
-  dimension: department {
+  dimension: product_key_foreign {
     type: string
-    sql: ${product.department} ;;
-  }
- dimension: store_name {
-   type: string
-   sql: ${store.store_name}   ;;
- }
-  measure: sales {
-    type: sum
-    sql: ${sales_fact.sales} ;;
-  }
-  measure: Average_Monthly_Sales_Per_Store {
-    type: average
-    sql: ${sales_fact.sales} ;;
+    sql: ${product.product_key}  ;;
   }
 }
 
