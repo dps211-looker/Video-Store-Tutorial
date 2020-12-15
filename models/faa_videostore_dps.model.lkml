@@ -20,7 +20,7 @@ explore: stores_and_sales_details{}
 explore:  monthly_sales_tables_dt{}
 explore: monthly_sales_info {
   view_name: monthly_sales_info
-   #extends: [times, product, store, sales_fact]
+  #extends: [times, product, store, sales_fact]
   join: times {
     from: times
     sql_on: ${times.time_key} = ${monthly_sales_info.Transaction_month} ;;
