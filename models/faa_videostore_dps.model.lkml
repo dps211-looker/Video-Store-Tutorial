@@ -10,7 +10,24 @@ datagroup: faa_videostore_dps_default_datagroup {
 persist_with: faa_videostore_dps_default_datagroup
 
 explore: product {}
-explore : sales_fact {}
+explore : sales_fact {
+  label: "Monthly Sales Analysis1"
+  join: store {
+    sql_on: ${sales_fact.store_key} = ${store.store_key} ;;
+    type: inner
+    relationship: one_to_one
+    }
+  join: product {
+    sql_on: ${sales_fact.product_key} = ${product.product_key} ;;
+    type: inner
+    relationship: one_to_one
+  }
+  join: times {
+    sql_on: ${sales_fact.time_key} = ${times.time_key} ;;
+    type: inner
+    relationship: one_to_one
+  }
+}
 explore: store {}
 explore: target_sales {}
 #explore: fiscal_date {}
