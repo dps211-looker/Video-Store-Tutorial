@@ -81,4 +81,25 @@ explore : monthly_sales_analysis{
     type: inner
     relationship: one_to_one
   }
+
+
+}
+explore: sales_fact_2 {
+  from: sales_fact
+  label: "sales_fact"
+  join: store {
+    sql_on: ${sales_fact_2.store_key} = ${store.store_key} ;;
+    type: inner
+    relationship: one_to_one
+  }
+  join: product {
+    sql_on: ${sales_fact_2.product_key} = ${product.product_key} ;;
+    type: inner
+    relationship: one_to_one
+  }
+  join: times {
+    sql_on: ${sales_fact_2.time_key} = ${times.time_key} ;;
+    type: inner
+    relationship: one_to_one
+  }
 }
