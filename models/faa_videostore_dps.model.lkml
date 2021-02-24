@@ -11,7 +11,7 @@ persist_with: faa_videostore_dps_default_datagroup
 
 explore: product {}
 explore : sales_fact {
-  label: "Monthly Sales Analysis1"
+  label: "Monthly Sales Analysis"
   join: store {
     sql_on: ${sales_fact.store_key} = ${store.store_key} ;;
     type: inner
