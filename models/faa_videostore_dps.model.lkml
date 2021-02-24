@@ -58,32 +58,7 @@ explore: monthly_sales_info {
   }
 
 }
-explore: times {}
-explore : monthly_sales_analysis{
 
-  join: store {
-    sql_on: ${monthly_sales_analysis.store_key_foreign} = ${store.store_key} ;;
-    type: inner
-    relationship: one_to_one
-  }
-  join: product {
-    sql_on: ${monthly_sales_analysis.product_key_foreign} = ${product.product_key} ;;
-    type: inner
-    relationship: one_to_one
-  }
-  join: times {
-    sql_on: ${monthly_sales_analysis.time_key_foreign} = ${times.time_key} ;;
-    type: inner
-    relationship: one_to_one
-  }
-  join: sales_fact{
-    sql_on: ${sales_fact.product_key} = ${monthly_sales_analysis.product_key_foreign} AND ${sales_fact.time_key} = ${monthly_sales_analysis.time_key_foreign} AND ${sales_fact.store_key} = ${monthly_sales_analysis.store_key_foreign};;
-    type: inner
-    relationship: one_to_one
-  }
-
-
-}
 explore: sales_fact_2 {
   from: sales_fact
   label: "sales_fact"
